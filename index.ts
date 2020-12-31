@@ -1,4 +1,4 @@
-import { FibonacciSeq, FibonacciAt, _0, _5, Numbers } from './types';
+import { FibonacciSeq, FibonacciAt, } from './fibonacci';
 
 const x: FibonacciSeq<_0> = [];
 const y: FibonacciSeq<_5> = [0, 1, 1, 2, 3];
