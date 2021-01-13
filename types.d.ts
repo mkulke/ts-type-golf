@@ -1,45 +1,45 @@
 type Z = 0;
 
-// type Increment<N> = [N, 1];
-type Increment<N> = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+// type S<N> = [N, 1];
+type S<N> = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
 ][Extract<N, number>];
 
 type Eq<A, B extends A> = true;
 
-type _1 = Increment<Z>;
-type _2 = Increment<_1>;
-type _3 = Increment<_2>;
-type _4 = Increment<_3>;
-type _5 = Increment<_4>;
-type _6 = Increment<_5>;
-type _7 = Increment<_6>;
-type _8 = Increment<_7>;
-type _9 = Increment<_8>;
-type _10 = Increment<_9>;
-type _11 = Increment<_10>;
-type _12 = Increment<_11>;
-type _13 = Increment<_12>;
-type _14 = Increment<_13>;
-type _15 = Increment<_14>;
+type _1 = S<Z>;
+type _2 = S<_1>;
+type _3 = S<_2>;
+type _4 = S<_3>;
+type _5 = S<_4>;
+type _6 = S<_5>;
+type _7 = S<_6>;
+type _8 = S<_7>;
+type _9 = S<_8>;
+type _10 = S<_9>;
+type _11 = S<_10>;
+type _12 = S<_11>;
+type _13 = S<_12>;
+type _14 = S<_13>;
+type _15 = S<_14>;
 
 type Negative = -1;
 
-// type Decrement<N>
-//   = N extends Increment<infer M> ? M
+// type P<N>
+//   = N extends S<infer M> ? M
 //   : Negative;
-type Decrement<N> = [
+type P<N> = [
   Negative,
-  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
 ][Extract<N, number>];
 
 type Add<N, A>
   = A extends Z ? N
-  : Add<Increment<N>, Decrement<A>>;
+  : Add<S<N>, P<A>>;
 
-type Subtract<N, S>
+type Sub<N, S>
   = S extends Z ? N
-  : Subtract<Decrement<N>, Decrement<S>>;
+  : Sub<P<N>, P<S>>;
 
 type Unshift<A, B extends any[]> = [A, ...B];
 
