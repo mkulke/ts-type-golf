@@ -19,7 +19,7 @@ type _15 = S<_14>;
 
 type Add<N, A>
   = A extends Z ? N
-  : A extends S<infer B> ? Add<S<N>, B>
+  : A extends S<infer B> ? S<Add<N, B>>
   : never;
 
 type Eq<A, B extends A> = true;
