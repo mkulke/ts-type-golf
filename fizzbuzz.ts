@@ -1,6 +1,6 @@
 type IsDivisibleBy<N, D>
   = N extends Negative ? false
-  : N extends _0 ? true
+  : N extends Z ? true
   : IsDivisibleBy<Subtract<N, D>, D>;
 
 type And<A, B>
@@ -19,7 +19,7 @@ type FizzBuzzNth<N>
   : N;
 
 type FizzBuzzUpTo<N, O extends any[] = []>
-  = N extends _0 ? O
+  = N extends Z ? O
   : FizzBuzzUpTo<Decrement<N>, Unshift<FizzBuzzNth<N>, O>>;
 
 // type test_fizzbuzz = [

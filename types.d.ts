@@ -1,4 +1,4 @@
-type _0 = 0;
+type Z = 0;
 
 // type Increment<N> = [N, 1];
 type Increment<N> = [
@@ -7,7 +7,7 @@ type Increment<N> = [
 
 type Eq<A, B extends A> = true;
 
-type _1 = Increment<_0>;
+type _1 = Increment<Z>;
 type _2 = Increment<_1>;
 type _3 = Increment<_2>;
 type _4 = Increment<_3>;
@@ -34,17 +34,17 @@ type Decrement<N> = [
 ][Extract<N, number>];
 
 type Add<N, A>
-  = A extends _0 ? N
+  = A extends Z ? N
   : Add<Increment<N>, Decrement<A>>;
 
 type Subtract<N, S>
-  = S extends _0 ? N
+  = S extends Z ? N
   : Subtract<Decrement<N>, Decrement<S>>;
 
 type Unshift<A, B extends any[]> = [A, ...B];
 
-type Numbers
-  = _0
+type Nat
+  = Z
   | _1
   | _2
   | _3
@@ -52,4 +52,3 @@ type Numbers
   | _5
   | _6
   | _7;
-
