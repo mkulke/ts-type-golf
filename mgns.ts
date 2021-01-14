@@ -1,6 +1,28 @@
 type Z = 0;
 type S<T> = [T, 1];
 
+type Add<N, A>
+  = A extends Z ? N
+  : A extends S<infer B> ? S<Add<N, B>>
+  : never;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 type _1 = S<Z>;
 type _2 = S<_1>;
 type _3 = S<_2>;
@@ -17,14 +39,12 @@ type _13 = S<_12>;
 type _14 = S<_13>;
 type _15 = S<_14>;
 
-type Add<N, A>
-  = A extends Z ? N
-  : A extends S<infer B> ? S<Add<N, B>>
-  : never;
-
 type Eq<A, B extends A> = true;
 
-type test_add = Eq<Add<_1, _2>, _3>;
+type test_add = [
+  Eq<Add<_1, _2>, _3>,
+  Eq<Add<Z, _2>, _2>,
+]
 
 type Fibonacci<N>
   = N extends Z ? Z
