@@ -6,23 +6,6 @@ type Add<N, A>
   : A extends S<infer B> ? S<Add<N, B>>
   : never;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 type _1 = S<Z>;
 type _2 = S<_1>;
 type _3 = S<_2>;
@@ -57,13 +40,6 @@ type test_fibonacci = [
   Eq<Fibonacci<_7>, _13>,
   Eq<Fibonacci<Z>, Z>,
 ];
-
-
-
-
-
-
-
 
 type Unshift<A, B extends any[]> = [A, ...B];
 
